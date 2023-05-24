@@ -1,0 +1,26 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <OutputType>Library</OutputType>
+    <TargetFramework>net6.0</TargetFramework>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <Nullable>enable</Nullable>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Devart.Data.PostgreSql" Version="8.1.134" />
+    <PackageReference Include="Tnf.AspNetCore" Version="6.1.0.13001" />
+    <PackageReference Include="Tnf.EntityFrameworkCore" Version="6.1.0.13001" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\Dominio.Dto\Dominio.Dto.csproj" />
+    <ProjectReference Include="..\Dominio\Dominio.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Folder Include="Mapeamento\" />
+    <Folder Include="Repositorio\" />
+  </ItemGroup>
+
+</Project>
