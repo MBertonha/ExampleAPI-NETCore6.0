@@ -9,7 +9,7 @@ namespace Dominio.Dto.Exemplo.Interface
 {
     public interface IExemploLeituraRepositorio
     {
-        Task<IListaBaseDto<ExemploDTO>> BuscarTodos(ExemploDTO buscar);
+        Task<IListaBaseDto<ExemploDTO>> BuscarTodos(BuscarTodosExemploDTO buscar);
 
         Task<ExemploDTO> BuscarPorId(int seaOs);
     }

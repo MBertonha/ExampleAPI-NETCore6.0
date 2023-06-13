@@ -1,4 +1,6 @@
 ﻿using Microsoft.Extensions.DependencyInjection;
+using Servico.Servicos;
+using Servico.Servicos.Validacao;
 using System;
 using System.Collections.Generic;
 using System.Text;
@@ -10,8 +12,8 @@ namespace Servico.Servicos
     {
         public static void AddServicosConfiguracao(this IServiceCollection services)
         {
-            //services.AddTransient<IJpvServico, JpvServico>();
-            //services.AddTransient<IValidacaoJpv, ValidacaoJpv>();
+            services.AddTransient<IExemploServico, ExemploServico>();
+            services.AddTransient<IValidacaoExemplo, ValidacaoExemplo>();
         }
     }
 }

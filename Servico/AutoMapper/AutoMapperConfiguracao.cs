@@ -1,4 +1,5 @@
 ﻿using Microsoft.Extensions.DependencyInjection;
+using Servico.AutoMapper;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -13,6 +14,7 @@ namespace ExampleAPI.Servico.AutoMapper
         {
             services.AddTnfAutoMapper(config =>
             {
+                config.AddProfile<SystemLinqProfile>();
             });
         }
     }

@@ -5,7 +5,10 @@ using ExempleAPI.Configuracoes;
 using ExampleAPI.Infra.Database;
 using Servico.Servicos;
 using ExampleAPI.Servico.AutoMapper;
-
+using Microsoft.AspNetCore.Authentication.JwtBearer;
+using Microsoft.IdentityModel.Tokens;
+using System.Text;
+using ExempleAPI.Configuracoes.Security;
 
 namespace ExempleAPI
 {
@@ -44,6 +47,13 @@ namespace ExempleAPI
 
             #region Classes
             services.AddServicosConfiguracao();
+
+            services.AddScoped<JwtTokenGenerator>(provider =>
+            {
+                var config = Configuration.GetSection("AppSettings");
+                var secretKey = config.GetValue<string>("SecretKey");
+                return new JwtTokenGenerator(secretKey);
+            });
             #endregion
 
             #region TNF
@@ -56,7 +66,29 @@ namespace ExempleAPI
             services.AddSwaggerConfiguration(Configuration);
             #endregion
 
-            #region Token
+            #region Token JWT
+
+            var config = Configuration.GetSection("AppSettings");
+            var secretKey = config.GetValue<string>("SecretKey");
+            var key = Encoding.ASCII.GetBytes(secretKey);
+
+            services.AddAuthentication(x =>
+            {
+                x.DefaultAuthenticateScheme = JwtBearerDefaults.AuthenticationScheme;
+                x.DefaultChallengeScheme = JwtBearerDefaults.AuthenticationScheme;
+            })
+            .AddJwtBearer(x =>
+            {
+                x.RequireHttpsMetadata = false;
+                x.SaveToken = true;
+                x.TokenValidationParameters = new TokenValidationParameters
+                {
+                    ValidateIssuerSigningKey = true,
+                    IssuerSigningKey = new SymmetricSecurityKey(key),
+                    ValidateIssuer = false,
+                    ValidateAudience = false
+                };
+            });
             #endregion
 
             return services.BuildServiceProvider(false);
@@ -84,7 +116,21 @@ namespace ExempleAPI
             });
             #endregion
 
+            #region Token JWT
+            app.UseAuthentication();
             app.UseAuthorization();
+
+            app.UseEndpoints(endpoints =>
+            {
+                endpoints.MapControllers();
+
+                // Exemplo de proteção de um endpoint específico
+                endpoints.MapGet("/api/secure", async context =>
+                {
+                    await context.Response.WriteAsync("Este é um endpoint protegido.");
+                }).RequireAuthorization();
+            });
+            #endregion
 
             app.UseMvc();
         }

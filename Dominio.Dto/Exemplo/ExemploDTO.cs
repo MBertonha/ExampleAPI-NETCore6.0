@@ -9,7 +9,5 @@ namespace Dominio.Dto
 {
     public class ExemploDTO : BaseDto
     {
-        public int Nome { get; set; }
-        public string Email { get; set; }
     }
 }

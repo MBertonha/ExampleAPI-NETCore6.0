@@ -5,12 +5,10 @@ using System.Text;
 using System.Threading.Tasks;
 using Tnf.Repositories;
 
-namespace Dominio.Entidades.Exemplo
+namespace Dominio.Entidades
 {
     public interface IExemploRepositorio : IRepository
     {
-        Task<ExemploEntidade> InsertAsync(ExemploEntidade exemplo);
-        Task<ExemploEntidade> UpdateAsync(ExemploEntidade exemplo);
-        Task RemoverExemplo(int id);
+
     }
 }

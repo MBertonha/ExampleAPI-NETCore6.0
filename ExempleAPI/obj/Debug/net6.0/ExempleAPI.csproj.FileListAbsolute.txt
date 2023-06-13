@@ -145,6 +145,7 @@ E:\ExemploAPI\ExampleAPI-NETCore6.0\ExempleAPI\bin\Debug\net6.0\Devart.Data.Post
 E:\ExemploAPI\ExampleAPI-NETCore6.0\ExempleAPI\bin\Debug\net6.0\FluentValidation.dll
 E:\ExemploAPI\ExampleAPI-NETCore6.0\ExempleAPI\bin\Debug\net6.0\FluentValidation.AspNetCore.dll
 E:\ExemploAPI\ExampleAPI-NETCore6.0\ExempleAPI\bin\Debug\net6.0\FluentValidation.DependencyInjectionExtensions.dll
+E:\ExemploAPI\ExampleAPI-NETCore6.0\ExempleAPI\bin\Debug\net6.0\Microsoft.AspNetCore.Authentication.JwtBearer.dll
 E:\ExemploAPI\ExampleAPI-NETCore6.0\ExempleAPI\bin\Debug\net6.0\Microsoft.AspNetCore.JsonPatch.dll
 E:\ExemploAPI\ExampleAPI-NETCore6.0\ExempleAPI\bin\Debug\net6.0\Microsoft.AspNetCore.Mvc.NewtonsoftJson.dll
 E:\ExemploAPI\ExampleAPI-NETCore6.0\ExempleAPI\bin\Debug\net6.0\Microsoft.AspNetCore.Mvc.Versioning.dll
